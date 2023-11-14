@@ -9,7 +9,7 @@ var prev = document.getElementById('prev');
 var next = document.getElementById('next');
 var currentImageIndex = 0;
 
-const imgNumber = 15;
+const imgNumber = 18;
 
 function init() {
 	drawAlbum();
@@ -20,6 +20,14 @@ function init() {
 
 	prev.addEventListener("click", showPrev, false);
 	next.addEventListener("click", showNext, false);
+
+	document.body.addEventListener("keydown", (e) => {
+        if(e.key == "ArrowRight") {
+            showNext();
+        } else if(e.key == "ArrowLeft") {
+            showPrev();
+        }
+    });
 
 	grayOut.addEventListener("click", close, false);
 }
