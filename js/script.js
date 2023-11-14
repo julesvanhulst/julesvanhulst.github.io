@@ -7,12 +7,16 @@ var border = document.getElementById('border');
 var album = document.getElementById('album');
 var prev = document.getElementById('prev');
 var next = document.getElementById('next');
+
 var currentImageIndex = 0;
+var imgNumber = 0;
+var url;
 
-const imgNumber = 18;
+async function init() {
+    url = await getUrl("../images/images.json");
+    imgNumber = url.image.length;
 
-function init() {
-	drawAlbum();
+	drawAlbum(url);
 
 	for(let i = 0; i < photos.length; i++) {
 		photos[i].addEventListener("click", function() { showImage(i); }, false);
@@ -32,13 +36,27 @@ function init() {
 	grayOut.addEventListener("click", close, false);
 }
 
+async function getUrl(path) {
+    try {
+        const response = await fetch(path);
+        if (!response.ok) {
+            throw new Error(`Échec du chargement du fichier JSON : ${response.statusText}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Erreur lors du chargement du fichier JSON :', error);
+        throw error;
+    }
+}
+
 function showImage(index) {
 	let img = new Image();
-	img.src = "./images/photos/IMG_" + index + ".jpg";
+	img.src = url.image[index].url;
 
 	let imageSize = size(document.documentElement.clientWidth, document.documentElement.clientHeight, img.width, img.height);
 
-	zoom.style.backgroundImage = "url('./images/photos/IMG_" + index + ".jpg')";
+	zoom.style.backgroundImage = "url('" + url.image[index].url + "')";
 	border.style.display = "flex";
 
 	zoom.style.width = imageSize.x + "px";
@@ -60,14 +78,14 @@ function close() {
 }
 
 function drawAlbum() {
-	for (var i = 0; i < imgNumber; i++) {
+	for (var i = 0; i < url.image.length; i++) {
+
 		let photo = document.createElement("a");
-		let url = "url('./images/photos/IMG_" + i + ".jpg')";
-		
-		photo.name = "IMG_" + i + ".jpg";
+
+		photo.name = url.image[i].nom + ".jpg";
+		photo.style.backgroundImage = "url('" + url.image[i].url + "')";
 		photo.classList.add("photos");
-		photo.style.backgroundImage = url;
-		
+
 		album.appendChild(photo);
 	}
 }
