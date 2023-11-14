@@ -4,7 +4,6 @@ var grayOut = document.getElementById("grayout");
 var photos = document.getElementsByClassName('photos');
 var zoom = document.getElementById('zoom');
 var border = document.getElementById('border');
-var cross = document.getElementById('cross');
 var album = document.getElementById('album');
 var prev = document.getElementById('prev');
 var next = document.getElementById('next');
@@ -22,16 +21,16 @@ function init() {
 	prev.addEventListener("click", showPrev, false);
 	next.addEventListener("click", showNext, false);
 
-	cross.addEventListener("click", close, false);
+	grayOut.addEventListener("click", close, false);
 }
 
 function showImage(index) {
 	let img = new Image();
-	img.src = "./images/photos/IMG_" + (index + 1) + ".jpg";
+	img.src = "./images/photos/IMG_" + index + ".jpg";
 
 	let imageSize = size(document.documentElement.clientWidth, document.documentElement.clientHeight, img.width, img.height);
 
-	zoom.style.backgroundImage = "url('./images/photos/IMG_" + (index + 1) + ".jpg')";
+	zoom.style.backgroundImage = "url('./images/photos/IMG_" + index + ".jpg')";
 	border.style.display = "flex";
 
 	zoom.style.width = imageSize.x + "px";
@@ -53,9 +52,7 @@ function close() {
 }
 
 function drawAlbum() {
-
-	for (var i = 1; i <= imgNumber; i++) {
-
+	for (var i = 0; i < imgNumber; i++) {
 		let photo = document.createElement("a");
 		let url = "url('./images/photos/IMG_" + i + ".jpg')";
 		
@@ -68,13 +65,19 @@ function drawAlbum() {
 }
 
 function showPrev() {
-	currentImageIndex = Math.max(0, currentImageIndex - 1); // Make sure it doesn't go below 0
-	showImage(currentImageIndex);
+    currentImageIndex--;
+    if(currentImageIndex < 0) {
+        currentImageIndex = imgNumber - 1;
+    }
+    showImage(currentImageIndex);
 }
 
 function showNext() {
-	currentImageIndex = Math.min(imgNumber - 1, currentImageIndex + 1); // Make sure it doesn't go above imgNumber - 1
-	showImage(currentImageIndex);
+    currentImageIndex++;
+    if(currentImageIndex >= imgNumber) {
+        currentImageIndex = 0;
+    }
+    showImage(currentImageIndex);
 }
 
 function size(vWidth, vHeight, iWidth, iHeight) {
