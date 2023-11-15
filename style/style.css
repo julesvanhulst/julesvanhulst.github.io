@@ -53,7 +53,7 @@ main {
 footer {
 	width: 100%;
 	max-width: 100%;
-	height: 160px;
+	height: 180px;
 	margin-top: 200px;
 	background-color: #2E1C2B;
 	display: flex;
@@ -121,6 +121,19 @@ footer p {
 
 #title:hover + #line {
     width: 280px;
+}
+
+#up {
+    background-image: url(../images/up-arrow.svg);
+    height: 40px;
+    width: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: invert(100%);
+}
+
+#up:hover {
+    transform: rotate(360deg);
 }
 
 #album {
