@@ -5,6 +5,11 @@
   src: url("./social.ttf");
 }
 
+::selection {
+    background: #893168;
+    color: white;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -94,16 +99,6 @@ footer p {
 	z-index: 2;
 	display: none;
 	cursor: pointer;
-}
-
-#s1, #s2, #s3, #s4 {
-	width: 48px;
-	height: 48px;
-	margin: 5px;
-	background-size: cover;
-	background-size: contain;
-	transition: 0.5s;
-	filter: invert(100%);
 }
 
 #line {
