@@ -125,15 +125,12 @@ function showImage(index) {
 	border.style.height = (imageSize.y + 8) + "px";
 
 	grayOut.style.display = "block";
-
 	currentImageIndex = index;
 }
 
 function close() {
 	grayOut.style.display = "none";
 	border.style.display = "none";
-	border.style.width = "340px";
-	border.style.height = "340px";
 }
 
 function drawAlbum() {
@@ -187,7 +184,6 @@ function size(vWidth, vHeight, iWidth, iHeight) {
 			y = x * ratio;
 		}
 	}
-
 	return {x, y};
 }
 
