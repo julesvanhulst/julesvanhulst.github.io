@@ -110,12 +110,14 @@ function init() {
 }
 
 function showImage(index) {
+	grayOut.style.display = "block";
+
 	let img = new Image();
 	img.src = url.image[index].url;
 
-	let imageSize = size(document.documentElement.clientWidth, document.documentElement.clientHeight, img.width, img.height);
+	let imageSize = size(grayOut.clientWidth, grayOut.clientHeight, img.width, img.height);
 
-	zoom.style.backgroundImage = "url('" + url.image[index].url + "')";
+	zoom.style.backgroundImage = "url(" + url.image[index].url + ")";
 	border.style.display = "flex";
 
 	zoom.style.width = imageSize.x + "px";
@@ -124,7 +126,6 @@ function showImage(index) {
 	border.style.width = (imageSize.x + 8) + "px";
 	border.style.height = (imageSize.y + 8) + "px";
 
-	grayOut.style.display = "block";
 	currentImageIndex = index;
 }
 
@@ -139,7 +140,7 @@ function drawAlbum() {
 		let photo = document.createElement("a");
 
 		photo.name = url.image[i].nom + ".jpg";
-		photo.style.backgroundImage = "url('" + url.image[i].url + "')";
+		photo.style.backgroundImage = "url(" + url.image[i].url + ")";
 		photo.classList.add("photos");
 
 		album.appendChild(photo);
