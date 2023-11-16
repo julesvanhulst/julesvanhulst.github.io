@@ -42,7 +42,7 @@ header {
 }
 
 #title {
-	font-family: 'Space Grotesk';
+	font-family: 'Space Grotesk', sans-serif;
 	color: #2e1c2b;
 	font-size: 2.4rem;
 	font-weight: bold;
