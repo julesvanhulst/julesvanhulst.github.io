@@ -77,6 +77,7 @@ var url = {
             ]
           };
 
+url = url.image.reverse();
 var grayOut = document.getElementById("grayout");
 var photos = document.getElementsByClassName('photos');
 var zoom = document.getElementById('zoom');
@@ -86,7 +87,7 @@ var prev = document.getElementById('prev');
 var next = document.getElementById('next');
 
 var currentImageIndex = 0;
-var imgNumber = url.image.length;
+var imgNumber = url.length;
 
 function init() {
 	drawAlbum();
@@ -113,11 +114,11 @@ function showImage(index) {
 	grayOut.style.display = "block";
 
 	let img = new Image();
-	img.src = url.image[index].url;
+	img.src = url[index].url;
 
 	let imageSize = size(grayOut.clientWidth, grayOut.clientHeight, img.width, img.height);
 
-	zoom.style.backgroundImage = "url(" + url.image[index].url + ")";
+	zoom.style.backgroundImage = "url(" + url[index].url + ")";
 	border.style.display = "flex";
 
 	zoom.style.width = imageSize.x + "px";
@@ -135,12 +136,12 @@ function close() {
 }
 
 function drawAlbum() {
-	for (var i = 0; i < url.image.length; i++) {
+	for (var i = 0; i < url.length; i++) {
 
 		let photo = document.createElement("a");
 
-		photo.name = url.image[i].nom + ".jpg";
-		photo.style.backgroundImage = "url(" + url.image[i].url + ")";
+		photo.name = url[i].nom + ".jpg";
+		photo.style.backgroundImage = "url(" + url[i].url + ")";
 		photo.classList.add("photos");
 
 		album.appendChild(photo);
