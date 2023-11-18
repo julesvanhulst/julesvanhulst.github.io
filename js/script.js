@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", init, false);
 
-var url = {
+let imgList = {
             "image": [
               {
                 "nom": "IMG_0",
@@ -77,116 +77,123 @@ var url = {
             ]
           };
 
-url = url.image.reverse();
-var grayOut = document.getElementById("grayout");
-var photos = document.getElementsByClassName('photos');
-var zoom = document.getElementById('zoom');
-var border = document.getElementById('border');
-var album = document.getElementById('album');
-var prev = document.getElementById('prev');
-var next = document.getElementById('next');
+imgList = imgList.image;
 
-var currentImageIndex = 0;
-var imgNumber = url.length;
+const GRAYOUT = document.getElementById("grayout");
+const ZOOM = document.getElementById('zoom');
+const BORDER = document.getElementById('border');
+const TOTAL_IMG = imgList.length;
+
+let currentImageIndex = 0;
 
 function init() {
 	drawAlbum();
 
-	for(let i = 0; i < photos.length; i++) {
+    let photos = document.getElementsByClassName('photos');
+	for(let i = 0; i < photos.length; i++)
 		photos[i].addEventListener("click", function() { showImage(i); }, false);
-	}
 
-	prev.addEventListener("click", showPrev, false);
-	next.addEventListener("click", showNext, false);
+    document.getElementById('prev').addEventListener("click", showPrev, false);
+    document.getElementById('next').addEventListener("click", showNext, false);
 
 	document.body.addEventListener("keydown", (e) => {
-        if(e.key == "ArrowRight") {
+        if(e.key === "ArrowRight")
             showNext();
-        } else if(e.key == "ArrowLeft") {
+        else if(e.key === "ArrowLeft")
             showPrev();
-        }
     });
 
-	grayOut.addEventListener("click", close, false);
+	GRAYOUT.addEventListener("click", closeImage, false);
 }
 
 function showImage(index) {
-	grayOut.style.display = "block";
+	GRAYOUT.style.display = "block";
 
 	let img = new Image();
-	img.src = url[index].url;
+	img.src = imgList[index].url;
 
-	let imageSize = size(grayOut.clientWidth, grayOut.clientHeight, img.width, img.height);
+	let imageSize = getImageSize(GRAYOUT.clientWidth, GRAYOUT.clientHeight, img.width, img.height);
 
-	zoom.style.backgroundImage = "url(" + url[index].url + ")";
-	border.style.display = "flex";
+	ZOOM.style.backgroundImage = "url(" + imgList[index].url + ")";
+	BORDER.style.display = "flex";
 
-	zoom.style.width = imageSize.x + "px";
-	zoom.style.height = imageSize.y + "px";
-
-	border.style.width = (imageSize.x + 8) + "px";
-	border.style.height = (imageSize.y + 8) + "px";
+    setSize(ZOOM, imageSize.w, imageSize.h);
+    setSize(BORDER, imageSize.w + 8, imageSize.h + 8)
 
 	currentImageIndex = index;
 }
 
-function close() {
-	grayOut.style.display = "none";
-	border.style.display = "none";
+function closeImage() {
+	GRAYOUT.style.display = "none";
+	BORDER.style.display = "none";
 }
 
 function drawAlbum() {
-	for (var i = 0; i < url.length; i++) {
-
+    let album = document.getElementById('album');
+	for (let i = 0; i < imgList.length; i++) {
 		let photo = document.createElement("a");
 
-		photo.name = url[i].nom + ".jpg";
-		photo.style.backgroundImage = "url(" + url[i].url + ")";
+		photo.id = imgList[i].nom + ".jpg";
+		photo.style.backgroundImage = "url(" + imgList[i].url + ")";
 		photo.classList.add("photos");
 
-		album.appendChild(photo);
+        album.appendChild(photo);
 	}
 }
 
 function showPrev() {
     currentImageIndex--;
-    if(currentImageIndex < 0) {
-        currentImageIndex = imgNumber - 1;
-    }
+    if(currentImageIndex < 0)
+        currentImageIndex = TOTAL_IMG - 1;
     showImage(currentImageIndex);
 }
 
 function showNext() {
     currentImageIndex++;
-    if(currentImageIndex >= imgNumber) {
+    if(currentImageIndex >= TOTAL_IMG)
         currentImageIndex = 0;
-    }
     showImage(currentImageIndex);
 }
 
-function size(vWidth, vHeight, iWidth, iHeight) {
-	let x = 0;
-	let y = 0;
+function setSize(element, eWidth, eHeight) {
+    if(typeof eWidth === 'string') {
+        element.style.width = eWidth;
+        element.style.height = eHeight;
+    } else {
+        element.style.width = eWidth + "px";
+        element.style.height = eHeight + "px";
+    }
+}
 
-	let ratio = iHeight / iWidth;
-	let iRatio = iWidth / iHeight;
+function getImageSize(viewWidth, viewHeight, imgWidth, imgHeight) {
+    let finalWidth;
+    let finalHeight;
 
-	if(isMobile(vWidth)) {
-		x = vWidth - 25;
-		y = x * ratio;
-		if(y >= vHeight) {
-			y = vHeight - 75;
-			x = y * iRatio;
-		}
-	} else {
-		y = vHeight - 200;
-		x = y * iRatio;
-		if(x >= vWidth) {
-			x = vWidth - 200;
-			y = x * ratio;
-		}
-	}
-	return {x, y};
+    let margin = 125;
+    let vMargin = 50;
+    let hMargin = 25;
+
+    let ratio = imgHeight / imgWidth;
+    let invertRatio = imgWidth / imgHeight;
+
+    if(isMobile(viewWidth)) {
+        finalWidth = viewWidth - hMargin;
+        finalHeight = finalWidth * ratio;
+
+        if(finalHeight >= viewHeight) {
+            finalHeight = viewHeight - vMargin;
+            finalWidth = finalHeight * invertRatio;
+        }
+    } else {
+        finalHeight = viewHeight - margin;
+        finalWidth = finalHeight * invertRatio;
+
+        if(finalWidth >= viewWidth) {
+            finalWidth = viewWidth - margin;
+            finalHeight = finalWidth * ratio;
+        }
+    }
+    return {w: finalWidth, h: finalHeight};
 }
 
 function isMobile(width) {
