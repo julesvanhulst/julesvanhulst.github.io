@@ -86,67 +86,72 @@ const TOTAL_IMG = imgList.length;
 
 let currentImgIndex = 0;
 let isFlip = false;
+let isZoom = false;
 
-let viewWidth= window.innerWidth;
-let viewHeight= window.innerHeight;
+let viewWidth = window.innerWidth;
+let viewHeight = window.innerHeight;
 
 function init() {
-	drawAlbum();
+    drawAlbum();
     addListenerToAlbum();
 
     document.getElementById('prev').addEventListener("click", showPrev, false);
     document.getElementById('next').addEventListener("click", showNext, false);
 
-	document.body.addEventListener("keydown", (e) => {
+    document.body.addEventListener("keydown", (e) => {
         if(e.key === "ArrowRight")
             showNext();
         else if(e.key === "ArrowLeft")
             showPrev();
     });
 
-	GRAYOUT.addEventListener("click", closeImage, false);
+    GRAYOUT.addEventListener("click", closeImage, false);
 
     window.addEventListener("resize", () => {
         viewWidth = window.innerWidth;
         viewHeight = window.innerHeight;
-        closeImage();
-        showImage(currentImgIndex);
+        if(isZoom) {
+            closeImage();
+            showImage(currentImgIndex);
+        }
     });
 }
 
 function showImage(index) {
-	GRAYOUT.style.display = "block";
+    GRAYOUT.style.display = "block";
 
-	let img = new Image();
-	img.src = imgList[index].url;
+    let img = new Image();
+    img.src = imgList[index].url;
 
-	let imageSize = getImageSize(img.width, img.height);
+    let imageSize = getImageSize(img.width, img.height);
 
-	ZOOM.style.backgroundImage = "url(" + imgList[index].url + ")";
-	BORDER.style.display = "flex";
+    ZOOM.style.backgroundImage = "url(" + imgList[index].url + ")";
+    BORDER.style.display = "flex";
 
     setSize(ZOOM, imageSize.w, imageSize.h);
     setSize(BORDER, imageSize.w + 8, imageSize.h + 8)
 
 	currentImgIndex = index;
+    isZoom = true;
 }
 
 function closeImage() {
-	GRAYOUT.style.display = "none";
-	BORDER.style.display = "none";
+    GRAYOUT.style.display = "none";
+    BORDER.style.display = "none";
+    isZoom = false;
 }
 
 function drawAlbum() {
     let album = document.getElementById('album');
-	for (let i = 0; i < imgList.length; i++) {
-		let photo = document.createElement("a");
+    for (let i = 0; i < imgList.length; i++) {
+        let photo = document.createElement("a");
 
-		photo.id = imgList[i].nom + ".jpg";
-		photo.style.backgroundImage = "url(" + imgList[i].url + ")";
-		photo.classList.add("photos");
+        photo.id = imgList[i].nom + ".jpg";
+        photo.style.backgroundImage = "url(" + imgList[i].url + ")";
+        photo.classList.add("photos");
 
         album.appendChild(photo);
-	}
+    }
 }
 
 function removeAlbum() {
