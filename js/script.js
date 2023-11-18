@@ -84,14 +84,15 @@ const ZOOM = document.getElementById('zoom');
 const BORDER = document.getElementById('border');
 const TOTAL_IMG = imgList.length;
 
-let currentImageIndex = 0;
+let currentImgIndex = 0;
+let isFlip = false;
+
+let viewWidth= window.innerWidth;
+let viewHeight= window.innerHeight;
 
 function init() {
 	drawAlbum();
-
-    let photos = document.getElementsByClassName('photos');
-	for(let i = 0; i < photos.length; i++)
-		photos[i].addEventListener("click", function() { showImage(i); }, false);
+    addListenerToAlbum();
 
     document.getElementById('prev').addEventListener("click", showPrev, false);
     document.getElementById('next').addEventListener("click", showNext, false);
@@ -104,6 +105,13 @@ function init() {
     });
 
 	GRAYOUT.addEventListener("click", closeImage, false);
+
+    window.addEventListener("resize", () => {
+        viewWidth = window.innerWidth;
+        viewHeight = window.innerHeight;
+        closeImage();
+        showImage(currentImgIndex);
+    });
 }
 
 function showImage(index) {
@@ -112,7 +120,7 @@ function showImage(index) {
 	let img = new Image();
 	img.src = imgList[index].url;
 
-	let imageSize = getImageSize(GRAYOUT.clientWidth, GRAYOUT.clientHeight, img.width, img.height);
+	let imageSize = getImageSize(img.width, img.height);
 
 	ZOOM.style.backgroundImage = "url(" + imgList[index].url + ")";
 	BORDER.style.display = "flex";
@@ -120,7 +128,7 @@ function showImage(index) {
     setSize(ZOOM, imageSize.w, imageSize.h);
     setSize(BORDER, imageSize.w + 8, imageSize.h + 8)
 
-	currentImageIndex = index;
+	currentImgIndex = index;
 }
 
 function closeImage() {
@@ -141,18 +149,39 @@ function drawAlbum() {
 	}
 }
 
+function removeAlbum() {
+    let oldAlbum = document.getElementById('album');
+    let newAlbum = document.createElement("div");
+    newAlbum.id = "album";
+    oldAlbum.after(newAlbum);
+    oldAlbum.remove();
+}
+
+function addListenerToAlbum() {
+    let photos = document.getElementsByClassName("photos");
+    if(!isFlip) {
+        for(let i = 0; i < photos.length; i++)
+            photos[i].addEventListener("click", function() { showImage(i); }, false);
+    } else {
+        for(let i = photos.length - 1; i >= 0; i--)
+            photos[i].addEventListener("click", function() { showImage(i); }, false);
+    }
+}
+
 function showPrev() {
-    currentImageIndex--;
-    if(currentImageIndex < 0)
-        currentImageIndex = TOTAL_IMG - 1;
-    showImage(currentImageIndex);
+    currentImgIndex--;
+    if(currentImgIndex < 0)
+        currentImgIndex = TOTAL_IMG - 1;
+    closeImage();
+    showImage(currentImgIndex);
 }
 
 function showNext() {
-    currentImageIndex++;
-    if(currentImageIndex >= TOTAL_IMG)
-        currentImageIndex = 0;
-    showImage(currentImageIndex);
+    currentImgIndex++;
+    if(currentImgIndex >= TOTAL_IMG)
+        currentImgIndex = 0;
+    closeImage();
+    showImage(currentImgIndex);
 }
 
 function setSize(element, eWidth, eHeight) {
@@ -165,18 +194,18 @@ function setSize(element, eWidth, eHeight) {
     }
 }
 
-function getImageSize(viewWidth, viewHeight, imgWidth, imgHeight) {
+function getImageSize(imgWidth, imgHeight) {
     let finalWidth;
     let finalHeight;
 
     let margin = 125;
     let vMargin = 50;
-    let hMargin = 25;
+    let hMargin = 50;
 
     let ratio = imgHeight / imgWidth;
     let invertRatio = imgWidth / imgHeight;
 
-    if(isMobile(viewWidth)) {
+    if(isMobile()) {
         finalWidth = viewWidth - hMargin;
         finalHeight = finalWidth * ratio;
 
@@ -196,6 +225,28 @@ function getImageSize(viewWidth, viewHeight, imgWidth, imgHeight) {
     return {w: finalWidth, h: finalHeight};
 }
 
-function isMobile(width) {
-	return width <= 1079;
+function isMobile() {
+	return viewWidth <= 1079;
+}
+
+function changeOrder() {
+    let date = document.getElementById("date-arrow");
+    flip(date);
+    imgList = imgList.reverse();
+
+    setTimeout(function () {
+        removeAlbum();
+        drawAlbum();
+        addListenerToAlbum()
+    }, 200);
+}
+
+function flip(element) {
+    if(element.classList.contains("flip")) {
+        isFlip = false;
+        element.classList.remove("flip");
+    } else {
+        isFlip = true;
+        element.classList.add("flip");
+    }
 }

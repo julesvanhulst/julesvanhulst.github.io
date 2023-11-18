@@ -16,6 +16,10 @@
 	transition: 0.5s;
 }
 
+.no-transition {
+	transition: none !important;
+}
+
 p {
     color: #E5E7EB;
 	font-family: "Inter", sans-serif;
@@ -121,6 +125,38 @@ footer {
 	justify-content: center;
 }
 
+.flip {
+	transform: rotate(180deg);
+}
+
+#date-container {
+	display: flex;
+	cursor: pointer;
+	margin-bottom: 10px;
+	align-items: center;
+}
+
+#date-container:hover {
+
+}
+
+#date-text {
+	font-family: "Inter", sans-serif;
+	font-weight: bold;
+	font-size: 22px;
+	text-decoration: none;
+	color: #2e1c2b;
+}
+
+#date-arrow {
+	background-image: url(../images/sort-arrow.svg);
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 15px;
+	width: 30px;
+	margin-left: 8px;
+}
+
 .photos {
 	height: 340px;
 	width: 340px;
@@ -152,6 +188,10 @@ footer {
 	justify-content: center;
 	align-items: center;
 	display: none;
+}
+
+#border, #zoom {
+	transition: none !important;
 }
 
 #grayout {
