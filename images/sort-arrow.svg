@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 449.94 262.8">
-  <defs>
-    <style>
-      .cls-1 {
-      fill: #2e1c2b;
-      }
-    </style>
-  </defs>
   <g>
     <path class="cls-1" d="m412.15,262.8H37.85c-33.7,0-50.5-40.7-26.7-64.5L198.25,11.1c14.8-14.8,38.7-14.8,53.3,0l187.3,187.2c23.7,23.7,6.9,64.5-26.7,64.5Z"/>
   </g>
