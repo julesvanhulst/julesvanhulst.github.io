@@ -147,10 +147,6 @@ footer {
 	box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px 0;
 }
 
-#date-container:hover {
-
-}
-
 #date-text {
 	font-family: "Inter", sans-serif;
 	font-weight: bold;
