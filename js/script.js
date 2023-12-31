@@ -73,7 +73,11 @@ let imgList = {
               {
                 "nom": "IMG_17",
                 "url": "https://cdn.discordapp.com/attachments/706768779086135337/1174075935608291388/IMG_17.jpg"
-              }
+              },
+	      {
+		"nom": "IMG_18",
+		"url": "https://cdn.discordapp.com/attachments/706768779086135337/1190997934855159838/IMG_4185.jpg"
+	      }
             ]
           };
 
