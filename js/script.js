@@ -1,87 +1,6 @@
 document.addEventListener("DOMContentLoaded", init, false);
 
-let imgList = {
-            "image": [
-              {
-                "nom": "IMG_0",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_0.jpg"
-              },
-              {
-                "nom": "IMG_1",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_1.jpg"
-              },
-              {
-                "nom": "IMG_2",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_2.jpg"
-              },
-              {
-                "nom": "IMG_3",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_3.jpg"
-              },
-              {
-                "nom": "IMG_4",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_4.jpg"
-              },
-              {
-                "nom": "IMG_5",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_5.jpg"
-              },
-              {
-                "nom": "IMG_6",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_6.jpg"
-              },
-              {
-                "nom": "IMG_7",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_7.jpg"
-              },
-              {
-                "nom": "IMG_8",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_8.jpg"
-              },
-              {
-                "nom": "IMG_9",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_9.jpg"
-              },
-              {
-                "nom": "IMG_10",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_10.jpg"
-              },
-              {
-                "nom": "IMG_11",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_11.jpg"
-              },
-              {
-                "nom": "IMG_12",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_12.jpg"
-              },
-              {
-                "nom": "IMG_13",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_13.jpg"
-              },
-              {
-                "nom": "IMG_14",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_14.jpg"
-              },
-              {
-                "nom": "IMG_15",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_15.jpg"
-              },
-              {
-                "nom": "IMG_16",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_16.jpg"
-              },
-              {
-                "nom": "IMG_17",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_17.jpg"
-              },
-              {
-                "nom": "IMG_18",
-                "url": "https://julesvanhulst.github.io/images/photos/IMG_18.jpg"
-              }
-            ]
-          };
-
-imgList = imgList.image;
+let imgList = generateImageList(22);
 
 const GRAYOUT = document.getElementById("grayout");
 const ZOOM = document.getElementById('zoom');
@@ -258,4 +177,15 @@ function flip(element) {
         isFlip = true;
         element.classList.add("flip");
     }
+}
+
+function generateImageList(nbPhotos) {
+    const images = [];
+    for (let i = 0; i < nbPhotos; i++) {
+    images.push({
+        nom: `IMG_${i}`,
+        url: `https://julesvanhulst.github.io/images/photos/IMG_${i}.jpg`
+    });
+    }
+    return images;
 }
