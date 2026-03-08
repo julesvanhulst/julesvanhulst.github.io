@@ -1,20 +1,28 @@
 document.addEventListener("DOMContentLoaded", init, false);
 
-let imgList = generateImageList(35);
+let imgList = [];
 
 const GRAYOUT = document.getElementById("grayout");
 const ZOOM = document.getElementById('zoom');
 const BORDER = document.getElementById('border');
-const TOTAL_IMG = imgList.length;
 
 let currentImgIndex = 0;
 let isFlip = false;
 let isZoom = false;
-
 let viewWidth = window.innerWidth;
 let viewHeight = window.innerHeight;
 
-function init() {
+async function loadManifest() {
+    const response = await fetch('./images/photos/manifest.json');
+    const files = await response.json();
+    imgList = files.map(filename => ({
+        nom: filename.replace('.jpg', ''),
+        url: `https://julesvanhulst.github.io/images/photos/${filename}`
+    }));
+}
+
+async function init() {
+    await loadManifest();
     drawAlbum();
     addListenerToAlbum();
 
@@ -22,10 +30,9 @@ function init() {
     document.getElementById('next').addEventListener("click", showNext, false);
 
     document.body.addEventListener("keydown", (e) => {
-        if(e.key === "ArrowRight")
-            showNext();
-        else if(e.key === "ArrowLeft")
-            showPrev();
+        if (e.key === "ArrowRight") showNext();
+        else if (e.key === "ArrowLeft") showPrev();
+        else if (e.key === "Escape") closeImage();
     });
 
     GRAYOUT.addEventListener("click", closeImage, false);
@@ -33,7 +40,7 @@ function init() {
     window.addEventListener("resize", () => {
         viewWidth = window.innerWidth;
         viewHeight = window.innerHeight;
-        if(isZoom) {
+        if (isZoom) {
             closeImage();
             showImage(currentImgIndex);
         }
@@ -43,18 +50,18 @@ function init() {
 function showImage(index) {
     GRAYOUT.style.display = "block";
 
-    let img = new Image();
+    const img = new Image();
     img.src = imgList[index].url;
 
-    let imageSize = getImageSize(img.width, img.height);
+    img.onload = () => {
+        const imageSize = getImageSize(img.naturalWidth, img.naturalHeight);
+        ZOOM.style.backgroundImage = "url(" + imgList[index].url + ")";
+        BORDER.style.display = "flex";
+        setSize(ZOOM, imageSize.w, imageSize.h);
+        setSize(BORDER, imageSize.w + 8, imageSize.h + 8);
+    };
 
-    ZOOM.style.backgroundImage = "url(" + imgList[index].url + ")";
-    BORDER.style.display = "flex";
-
-    setSize(ZOOM, imageSize.w, imageSize.h);
-    setSize(BORDER, imageSize.w + 8, imageSize.h + 8)
-
-	currentImgIndex = index;
+    currentImgIndex = index;
     isZoom = true;
 }
 
@@ -65,55 +72,41 @@ function closeImage() {
 }
 
 function drawAlbum() {
-    let album = document.getElementById('album');
+    const album = document.getElementById('album');
     for (let i = 0; i < imgList.length; i++) {
-        let photo = document.createElement("a");
-
+        const photo = document.createElement("a");
         photo.id = imgList[i].nom + ".jpg";
         photo.style.backgroundImage = "url(" + imgList[i].url + ")";
         photo.classList.add("photos");
-
         album.appendChild(photo);
     }
 }
 
-function removeAlbum() {
-    let oldAlbum = document.getElementById('album');
-    let newAlbum = document.createElement("div");
-    newAlbum.id = "album";
-    oldAlbum.after(newAlbum);
-    oldAlbum.remove();
-}
-
 function addListenerToAlbum() {
-    let photos = document.getElementsByClassName("photos");
-    if(!isFlip) {
-        for(let i = 0; i < photos.length; i++)
-            photos[i].addEventListener("click", function() { showImage(i); }, false);
+    const photos = document.getElementsByClassName("photos");
+    if (!isFlip) {
+        for (let i = 0; i < photos.length; i++)
+            photos[i].addEventListener("click", function () { showImage(i); }, false);
     } else {
-        for(let i = photos.length - 1; i >= 0; i--)
-            photos[i].addEventListener("click", function() { showImage(i); }, false);
+        for (let i = photos.length - 1; i >= 0; i--)
+            photos[i].addEventListener("click", function () { showImage(i); }, false);
     }
 }
 
 function showPrev() {
-    currentImgIndex--;
-    if(currentImgIndex < 0)
-        currentImgIndex = TOTAL_IMG - 1;
+    currentImgIndex = (currentImgIndex - 1 + imgList.length) % imgList.length;
     closeImage();
     showImage(currentImgIndex);
 }
 
 function showNext() {
-    currentImgIndex++;
-    if(currentImgIndex >= TOTAL_IMG)
-        currentImgIndex = 0;
+    currentImgIndex = (currentImgIndex + 1) % imgList.length;
     closeImage();
     showImage(currentImgIndex);
 }
 
 function setSize(element, eWidth, eHeight) {
-    if(typeof eWidth === 'string') {
+    if (typeof eWidth === 'string') {
         element.style.width = eWidth;
         element.style.height = eHeight;
     } else {
@@ -123,69 +116,52 @@ function setSize(element, eWidth, eHeight) {
 }
 
 function getImageSize(imgWidth, imgHeight) {
-    let finalWidth;
-    let finalHeight;
+    let finalWidth, finalHeight;
+    const margin = 125;
+    const vMargin = 50;
+    const hMargin = 50;
+    const ratio = imgHeight / imgWidth;
+    const invertRatio = imgWidth / imgHeight;
 
-    let margin = 125;
-    let vMargin = 50;
-    let hMargin = 50;
-
-    let ratio = imgHeight / imgWidth;
-    let invertRatio = imgWidth / imgHeight;
-
-    if(isMobile()) {
+    if (isMobile()) {
         finalWidth = viewWidth - hMargin;
         finalHeight = finalWidth * ratio;
-
-        if(finalHeight >= viewHeight) {
-            finalHeight = viewHeight - vMargin;
+        if (finalHeight >= viewHeight * 0.75) {
+            finalHeight = viewHeight * 0.75;
             finalWidth = finalHeight * invertRatio;
         }
     } else {
         finalHeight = viewHeight - margin;
         finalWidth = finalHeight * invertRatio;
-
-        if(finalWidth >= viewWidth) {
+        if (finalWidth >= viewWidth) {
             finalWidth = viewWidth - margin;
             finalHeight = finalWidth * ratio;
         }
     }
-    return {w: finalWidth, h: finalHeight};
+    return { w: finalWidth, h: finalHeight };
 }
 
 function isMobile() {
-	return viewWidth <= 1079;
+    return viewWidth <= 1079;
 }
 
 function changeOrder() {
-    let date = document.getElementById("date-arrow");
+    const date = document.getElementById("date-arrow");
     flip(date);
     imgList = imgList.reverse();
-
-    setTimeout(function () {
-        removeAlbum();
+    setTimeout(() => {
+        document.getElementById('album').innerHTML = '';
         drawAlbum();
-        addListenerToAlbum()
+        addListenerToAlbum();
     }, 200);
 }
 
 function flip(element) {
-    if(element.classList.contains("flip")) {
+    if (element.classList.contains("flip")) {
         isFlip = false;
         element.classList.remove("flip");
     } else {
         isFlip = true;
         element.classList.add("flip");
     }
-}
-
-function generateImageList(nbPhotos) {
-    const images = [];
-    for (let i = 0; i < nbPhotos; i++) {
-    images.push({
-        nom: `IMG_${i}`,
-        url: `https://julesvanhulst.github.io/images/photos/IMG_${i}.jpg`
-    });
-    }
-    return images;
 }

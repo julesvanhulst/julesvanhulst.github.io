@@ -1,0 +1,2 @@
+Get-ChildItem *.jpg | Sort-Object { [int]($_.BaseName -replace 'IMG_', '') } | Select-Object -ExpandProperty Name | ConvertTo-Json | Set-Content manifest.json
+Write-Host "manifest.json genere avec succes !"
