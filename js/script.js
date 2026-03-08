@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", init, false);
 
 let imgList = [];
+let metadataMap = {};
 
 const GRAYOUT = document.getElementById("grayout");
 const ZOOM = document.getElementById('zoom');
@@ -13,12 +14,18 @@ let viewWidth = window.innerWidth;
 let viewHeight = window.innerHeight;
 
 async function loadManifest() {
-    const response = await fetch('./images/photos/manifest.json');
-    const files = await response.json();
-    imgList = files.map(filename => ({
-        nom: filename.replace('.jpg', ''),
-        url: `https://julesvanhulst.github.io/images/photos/${filename}`
-    }));
+    const response = await fetch('./images/photos/metadata.json');
+    metadataMap = await response.json();
+    imgList = Object.keys(metadataMap)
+        .sort((a, b) => {
+            const n = s => parseInt(s.replace('IMG_', '').replace('.jpg', ''));
+            return n(a) - n(b);
+        })
+        .map(filename => ({
+            nom: filename.replace('.jpg', ''),
+            url: `https://julesvanhulst.github.io/images/photos/${filename}`,
+            filename
+        }));
 }
 
 async function init() {
@@ -59,6 +66,7 @@ function showImage(index) {
         BORDER.style.display = "flex";
         setSize(ZOOM, imageSize.w, imageSize.h);
         setSize(BORDER, imageSize.w + 8, imageSize.h + 8);
+        updateExifPanel(metadataMap[imgList[index].filename] || null);
     };
 
     currentImgIndex = index;
@@ -169,4 +177,64 @@ function flip(element) {
         isFlip = true;
         element.classList.add("flip");
     }
+}
+
+function updateExifPanel(meta) {
+    const panel = document.getElementById('exif-info');
+    panel.innerHTML = '';
+
+    if (!meta) {
+        panel.style.display = 'none';
+        return;
+    }
+
+    const items = [];
+
+    if (meta.location) {
+        const url = meta.gps ? `https://www.google.com/maps?q=${meta.gps.lat},${meta.gps.lon}` : null;
+        items.push({ text: meta.location, url });
+    }
+
+    if (meta.date) {
+        const d = new Date(meta.date + 'T12:00:00');
+        items.push({ text: d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }) });
+    }
+
+    const settings = [
+        meta.aperture,
+        meta.shutter,
+        meta.iso ? `ISO\u00A0${meta.iso}` : null,
+        meta.focal_length
+    ].filter(Boolean);
+    if (settings.length) items.push({ text: settings.join(' · ') });
+
+    if (meta.camera) items.push({ text: meta.camera });
+
+    if (items.length === 0) {
+        panel.style.display = 'none';
+        return;
+    }
+
+    items.forEach((item, i) => {
+        if (i > 0) {
+            const sep = document.createElement('span');
+            sep.className = 'exif-sep';
+            sep.textContent = '·';
+            panel.appendChild(sep);
+        }
+        if (item.url) {
+            const a = document.createElement('a');
+            a.href = item.url;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.textContent = item.text;
+            panel.appendChild(a);
+        } else {
+            const span = document.createElement('span');
+            span.textContent = item.text;
+            panel.appendChild(span);
+        }
+    });
+
+    panel.style.display = 'flex';
 }

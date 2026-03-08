@@ -1,0 +1,424 @@
+{
+    "IMG_0.jpg": {
+        "date": "2012-03-09",
+        "camera": "SAMSUNG GT-S5830",
+        "aperture": "f/2.6",
+        "shutter": "1/2222",
+        "iso": 50,
+        "focal_length": "4mm",
+        "gps": {
+            "lat": 42.692222,
+            "lon": 1.816667
+        },
+        "location": "Ax-les-Thermes, France"
+    },
+    "IMG_1.jpg": {
+        "date": "2014-07-21",
+        "camera": "TCL 6036Y",
+        "shutter": "1/767",
+        "iso": 100,
+        "focal_length": "3mm",
+        "gps": {
+            "lat": 40.741855,
+            "lon": -73.989351
+        },
+        "location": "New York, USA"
+    },
+    "IMG_2.jpg": {
+        "date": "2018-05-18",
+        "camera": "Panasonic DMC-G7",
+        "aperture": "f/9.0",
+        "shutter": "1/400",
+        "iso": 200,
+        "focal_length": "40mm",
+        "location": ""
+    },
+    "IMG_3.jpg": {
+        "date": "2019-02-20",
+        "camera": "samsung SM-N960F",
+        "aperture": "f/1.5",
+        "shutter": "1/50",
+        "iso": 320,
+        "focal_length": "4mm",
+        "gps": {
+            "lat": 46.142222,
+            "lon": -1.167222
+        },
+        "location": "La Rochelle, France"
+    },
+    "IMG_4.jpg": {
+        "date": "2019-07-13",
+        "camera": "Panasonic DMC-G7",
+        "aperture": "f/5.6",
+        "shutter": "1/500",
+        "iso": 200,
+        "focal_length": "150mm",
+        "location": ""
+    },
+    "IMG_5.jpg": {
+        "date": "2019-09-21",
+        "camera": "Panasonic DMC-G7",
+        "aperture": "f/5.6",
+        "shutter": "1/1000",
+        "iso": 200,
+        "focal_length": "150mm",
+        "location": "Île de Ré, France"
+    },
+    "IMG_6.jpg": {
+        "date": "2019-09-21",
+        "camera": "Panasonic DMC-G7",
+        "aperture": "f/9.0",
+        "shutter": "1/400",
+        "iso": 200,
+        "focal_length": "45mm",
+        "location": "Île de Ré, France"
+    },
+    "IMG_7.jpg": {
+        "date": "2020-06-01",
+        "camera": "Panasonic DMC-G7",
+        "aperture": "f/9.0",
+        "shutter": "1/800",
+        "iso": 400,
+        "focal_length": "114mm",
+        "location": ""
+    },
+    "IMG_8.jpg": {
+        "date": "2021-03-02",
+        "camera": "samsung SM-N960F",
+        "aperture": "f/2.4",
+        "shutter": "1/3788",
+        "iso": 50,
+        "focal_length": "4mm",
+        "gps": {
+            "lat": 42.808695,
+            "lon": -0.456422
+        },
+        "location": "Laruns, France"
+    },
+    "IMG_9.jpg": {
+        "date": "2021-07-05",
+        "camera": "samsung SM-G9910",
+        "aperture": "f/1.8",
+        "shutter": "1/1138",
+        "iso": 40,
+        "focal_length": "5mm",
+        "gps": {
+            "lat": 43.078732,
+            "lon": -0.397621
+        },
+        "location": "Louvie-Juzon, France"
+    },
+    "IMG_10.jpg": {
+        "date": "2021-07-07",
+        "camera": "samsung SM-G9910",
+        "aperture": "f/2.0",
+        "shutter": "1/50",
+        "iso": 40,
+        "focal_length": "6mm",
+        "gps": {
+            "lat": 42.968324,
+            "lon": -0.36645
+        },
+        "location": "Eaux-Bonnes, France"
+    },
+    "IMG_11.jpg": {
+        "date": "2022-05-23",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/327",
+        "iso": 32,
+        "focal_length": "9mm",
+        "gps": {
+            "lat": 46.174508,
+            "lon": -1.145378
+        },
+        "location": "La Rochelle, France"
+    },
+    "IMG_12.jpg": {
+        "date": "2022-07-02",
+        "camera": "Panasonic DMC-G7",
+        "aperture": "f/5.6",
+        "shutter": "1/1000",
+        "iso": 200,
+        "focal_length": "150mm",
+        "location": ""
+    },
+    "IMG_13.jpg": {
+        "date": "2022-08-09",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/99",
+        "iso": 125,
+        "focal_length": "9mm",
+        "gps": {
+            "lat": 42.998764,
+            "lon": -0.601256
+        },
+        "location": "Orcun, France"
+    },
+    "IMG_14.jpg": {
+        "date": "2022-08-15",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/99",
+        "iso": 64,
+        "focal_length": "9mm",
+        "gps": {
+            "lat": 42.847778,
+            "lon": -0.340169
+        },
+        "location": "Laruns, France"
+    },
+    "IMG_15.jpg": {
+        "date": "2022-08-16",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/1488",
+        "iso": 32,
+        "focal_length": "9mm",
+        "gps": {
+            "lat": 42.900353,
+            "lon": -0.246633
+        },
+        "location": "Arrens-Marsous, France"
+    },
+    "IMG_16.jpg": {
+        "date": "2022-08-17",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/60",
+        "iso": 400,
+        "focal_length": "9mm",
+        "gps": {
+            "lat": 42.901864,
+            "lon": -0.206367
+        },
+        "location": "Estaing, France"
+    },
+    "IMG_17.jpg": {
+        "date": "2022-08-17",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/1.5",
+        "shutter": "1/1089",
+        "iso": 50,
+        "focal_length": "6mm",
+        "gps": {
+            "lat": 42.883786,
+            "lon": -0.196428
+        },
+        "location": "Estaing, France"
+    },
+    "IMG_18.jpg": {
+        "date": "2022-08-29",
+        "camera": "Panasonic DMC-G7",
+        "location": ""
+    },
+    "IMG_19.jpg": {
+        "date": "2022-09-06",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/99",
+        "iso": 50,
+        "focal_length": "9mm",
+        "gps": {
+            "lat": 46.161986,
+            "lon": -1.277358
+        },
+        "location": "Rivedoux-Plage, France"
+    },
+    "IMG_20.jpg": {
+        "date": "2022-10-30",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/1.5",
+        "shutter": "1/1029",
+        "iso": 50,
+        "focal_length": "6mm",
+        "gps": {
+            "lat": 42.517128,
+            "lon": 1.826731
+        },
+        "location": "Porta, France"
+    },
+    "IMG_21.jpg": {
+        "date": "2023-01-27",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/100",
+        "iso": 125,
+        "focal_length": "9mm",
+        "gps": {
+            "lat": 42.768436,
+            "lon": 0.578356
+        },
+        "location": "Saint-Aventin, France"
+    },
+    "IMG_22.jpg": {
+        "date": "2023-01-27",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/978",
+        "iso": 32,
+        "focal_length": "9mm",
+        "gps": {
+            "lat": 42.769481,
+            "lon": 0.551772
+        },
+        "location": "Saint-Aventin, France"
+    },
+    "IMG_23.jpg": {
+        "date": "2023-01-29",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/444",
+        "iso": 32,
+        "focal_length": "9mm",
+        "gps": {
+            "lat": 42.763217,
+            "lon": 0.575328
+        },
+        "location": "Saint-Aventin, France"
+    },
+    "IMG_24.jpg": {
+        "date": "2023-07-23",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/99",
+        "iso": 50,
+        "focal_length": "9mm",
+        "gps": {
+            "lat": 45.758197,
+            "lon": 6.711167
+        },
+        "location": "Les Contamines-Montjoie, France"
+    },
+    "IMG_25.jpg": {
+        "date": "2023-07-27",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/1263",
+        "iso": 32,
+        "focal_length": "9mm",
+        "gps": {
+            "lat": 46.027286,
+            "lon": 6.970547
+        },
+        "location": "Trient, Suisse"
+    },
+    "IMG_26.jpg": {
+        "date": "2023-07-27",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/511",
+        "iso": 32,
+        "focal_length": "9mm",
+        "gps": {
+            "lat": 45.978633,
+            "lon": 6.902919
+        },
+        "location": "Chamonix-Mont-Blanc, France"
+    },
+    "IMG_27.jpg": {
+        "date": "2023-12-29",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/602",
+        "iso": 32,
+        "focal_length": "9mm",
+        "gps": {
+            "lat": 46.096592,
+            "lon": -0.615458
+        },
+        "location": "Saint-Félix, France"
+    },
+    "IMG_28.jpg": {
+        "date": "2024-08-24",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/1.5",
+        "shutter": "1/259",
+        "iso": 40,
+        "focal_length": "6mm",
+        "gps": {
+            "lat": 56.081761,
+            "lon": -4.437725
+        },
+        "location": "Drymen, Royaume-Uni"
+    },
+    "IMG_29.jpg": {
+        "date": "2024-08-27",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/1.5",
+        "shutter": "1/5319",
+        "iso": 50,
+        "focal_length": "6mm",
+        "gps": {
+            "lat": 56.530197,
+            "lon": -4.789603
+        },
+        "location": "Bridge of Orchy, Royaume-Uni"
+    },
+    "IMG_30.jpg": {
+        "date": "2024-08-27",
+        "camera": "Apple iPhone 13 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/377",
+        "iso": 32,
+        "focal_length": "9mm",
+        "gps": {
+            "lat": 56.532017,
+            "lon": -4.793944
+        },
+        "location": "Bridge of Orchy, Royaume-Uni"
+    },
+    "IMG_31.jpg": {
+        "date": "2025-08-08",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/2.2",
+        "shutter": "1/209",
+        "iso": 64,
+        "focal_length": "2mm",
+        "gps": {
+            "lat": 46.478661,
+            "lon": -0.536136
+        },
+        "location": "Béceleuf, France"
+    },
+    "IMG_32.jpg": {
+        "date": "2025-09-07",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/1.8",
+        "shutter": "1/497",
+        "iso": 80,
+        "focal_length": "7mm",
+        "gps": {
+            "lat": 44.773439,
+            "lon": 6.316739
+        },
+        "location": "Champoléon, France"
+    },
+    "IMG_33.jpg": {
+        "date": "2025-09-10",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/1.8",
+        "shutter": "1/2053",
+        "iso": 80,
+        "focal_length": "7mm",
+        "gps": {
+            "lat": 45.023247,
+            "lon": 6.056053
+        },
+        "location": "Villard-Notre-Dame, France"
+    },
+    "IMG_34.jpg": {
+        "date": "2026-01-05",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/1.8",
+        "shutter": "1/7143",
+        "iso": 64,
+        "focal_length": "7mm",
+        "gps": {
+            "lat": 46.110211,
+            "lon": -0.651728
+        },
+        "location": "Les Quatre Maisons, France"
+    }
+}

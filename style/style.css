@@ -190,9 +190,43 @@ footer {
 
 #zoom {
 	background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     border-radius: 12px;
     display: flex;
     justify-content: space-between;
+    position: relative;
+}
+
+#exif-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px 10px;
+    padding: 10px 16px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    border-radius: 0 0 12px 12px;
+    color: #E5E7EB;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    pointer-events: none;
+    transition: none !important;
+}
+
+#exif-info a {
+    color: #E5E7EB;
+    text-decoration: underline;
+    pointer-events: all;
+}
+
+.exif-sep {
+    opacity: 0.35;
 }
 
 #border {
