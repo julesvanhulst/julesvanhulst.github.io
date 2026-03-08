@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", init, false);
 
-let imgList = generateImageList(22);
+let imgList = generateImageList(35);
 
 const GRAYOUT = document.getElementById("grayout");
 const ZOOM = document.getElementById('zoom');
