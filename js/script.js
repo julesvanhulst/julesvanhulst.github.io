@@ -74,10 +74,15 @@ function closeImage() {
 function drawAlbum() {
     const album = document.getElementById('album');
     for (let i = 0; i < imgList.length; i++) {
-        const photo = document.createElement("a");
-        photo.id = imgList[i].nom + ".jpg";
-        photo.style.backgroundImage = "url(" + imgList[i].url + ")";
+        const photo = document.createElement("div");
         photo.classList.add("photos");
+
+        const img = document.createElement("img");
+        img.src = imgList[i].url;
+        img.loading = "lazy";
+        img.alt = imgList[i].nom;
+
+        photo.appendChild(img);
         album.appendChild(photo);
     }
 }
