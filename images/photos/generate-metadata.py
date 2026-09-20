@@ -8,10 +8,15 @@ Usage        : python generate-metadata.py
 
 import json
 import os
+import sys
 import time
 import urllib.request
 from PIL import Image
 from PIL.ExifTags import TAGS, GPSTAGS
+
+# La console Windows utilise cp1252 par défaut, qui ne connaît ni « → » ni
+# certains accents : sans ça, le dernier print lève UnicodeEncodeError.
+sys.stdout.reconfigure(encoding="utf-8")
 
 
 def reverse_geocode(lat, lon):
