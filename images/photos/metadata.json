@@ -420,5 +420,174 @@
             "lon": -0.651728
         },
         "location": "Les Quatre Maisons, France"
+    },
+    "IMG_35.jpg": {
+        "date": "2026-08-28",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/267",
+        "iso": 64,
+        "focal_length": "16mm",
+        "gps": {
+            "lat": 50.797978,
+            "lon": -114.846292
+        },
+        "location": "Kananaskis Improvement District, Canada"
+    },
+    "IMG_36.jpg": {
+        "date": "2026-08-29",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/1148",
+        "iso": 64,
+        "focal_length": "16mm",
+        "gps": {
+            "lat": 51.116903,
+            "lon": -114.9879
+        },
+        "location": "Municipal District of Bighorn, Canada"
+    },
+    "IMG_37.jpg": {
+        "date": "2026-08-30",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/914",
+        "iso": 50,
+        "focal_length": "16mm",
+        "gps": {
+            "lat": 51.425689,
+            "lon": -116.177658
+        },
+        "location": "Lake Louise, Canada"
+    },
+    "IMG_38.jpg": {
+        "date": "2026-08-30",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/1.8",
+        "shutter": "1/1553",
+        "iso": 80,
+        "focal_length": "7mm",
+        "gps": {
+            "lat": 51.506131,
+            "lon": -116.077478
+        },
+        "location": "Banff National Park, Canada"
+    },
+    "IMG_39.jpg": {
+        "date": "2026-08-30",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/1.8",
+        "shutter": "1/2273",
+        "iso": 64,
+        "focal_length": "7mm",
+        "gps": {
+            "lat": 51.523025,
+            "lon": -116.077744
+        },
+        "location": "Banff National Park, Canada"
+    },
+    "IMG_40.jpg": {
+        "date": "2026-08-30",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/1866",
+        "iso": 50,
+        "focal_length": "16mm",
+        "gps": {
+            "lat": 51.545603,
+            "lon": -116.067908
+        },
+        "location": "Banff National Park, Canada"
+    },
+    "IMG_41.jpg": {
+        "date": "2026-08-31",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/1.8",
+        "shutter": "1/837",
+        "iso": 64,
+        "focal_length": "7mm",
+        "gps": {
+            "lat": 51.537986,
+            "lon": -116.042975
+        },
+        "location": "Banff National Park, Canada"
+    },
+    "IMG_42.jpg": {
+        "date": "2026-08-31",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/2024",
+        "iso": 50,
+        "focal_length": "16mm",
+        "gps": {
+            "lat": 51.472047,
+            "lon": -116.012925
+        },
+        "location": "Banff National Park, Canada"
+    },
+    "IMG_43.jpg": {
+        "date": "2026-09-01",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/99",
+        "iso": 50,
+        "focal_length": "16mm",
+        "gps": {
+            "lat": 51.388981,
+            "lon": -115.943725
+        },
+        "location": "Banff National Park, Canada"
+    },
+    "IMG_44.jpg": {
+        "date": "2026-09-02",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/1.8",
+        "shutter": "1/6173",
+        "iso": 80,
+        "focal_length": "7mm",
+        "gps": {
+            "lat": 51.358331,
+            "lon": -115.733003
+        },
+        "location": "Banff National Park, Canada"
+    },
+    "IMG_45.jpg": {
+        "date": "2026-09-03",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/1481",
+        "iso": 50,
+        "focal_length": "16mm",
+        "gps": {
+            "lat": 51.357283,
+            "lon": -115.604889
+        },
+        "location": "Banff National Park, Canada"
+    },
+    "IMG_46.jpg": {
+        "date": "2026-09-04",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/352",
+        "iso": 50,
+        "focal_length": "16mm",
+        "gps": {
+            "lat": 51.180858,
+            "lon": -115.578972
+        },
+        "location": "Banff, Canada"
+    },
+    "IMG_47.jpg": {
+        "date": "2026-09-08",
+        "camera": "Apple iPhone 16 Pro",
+        "aperture": "f/2.8",
+        "shutter": "1/421",
+        "iso": 50,
+        "focal_length": "16mm",
+        "gps": {
+            "lat": 51.044236,
+            "lon": -114.063264
+        },
+        "location": "Calgary, Canada"
     }
 }
